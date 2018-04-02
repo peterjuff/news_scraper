@@ -37,6 +37,10 @@ app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/news_scraper");
 
+app.listen(3000, function() {
+  console.log("App running on port 3000!");
+});
+
 
 
      

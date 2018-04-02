@@ -20,11 +20,10 @@ app.get("/", function(req, res) {
       $("h1.entry-title").each(function(i, element) {
         // Save an empty result object
         var result = {};
-        console.log(result);
   
         // Add the text and href of every link, and save them as properties of the result object
         result.title = $(this)
-          .children("p")
+          .children("a")
           .text();
         result.link = $(this)
           .children("a")
@@ -41,7 +40,7 @@ app.get("/", function(req, res) {
             return res.json(err);
           });
       });
-  
+  console.log(result);
       // If we were able to successfully scrape and save an Article, send a message to the client
       res.send("Scrape Complete");
     });
