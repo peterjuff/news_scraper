@@ -1,7 +1,18 @@
+//require express & setup Router
+var express = require("express");
+var router = express.Router();
+// Initialize Express
+var app = express();
+//Require Mongoose
+var mongoose = require("mongoose");
+// Require all models
+var db = require("../models");
+
+
 // A GET route for scraping the echoJS website
 app.get("/", function(req, res) {
     // First, we grab the body of the html with request
-    axios.get("http://weeklyworldnews.com//").then(function(response) {
+    axios.get("http://weeklyworldnews.com/").then(function(response) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
   
