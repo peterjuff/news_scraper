@@ -37,6 +37,14 @@ app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/news_scraper");
 
+//require routes 
+var htmlRoutes = require("./routes/htmlRoutes.js");
+var apiRoutes = require("./routes/apiRoutes.js");
+
+//Use routes
+app.use("/", htmlRoutes);
+app.use("/api", apiRoutes);
+
 app.listen(3000, function() {
   console.log("App running on port 3000!");
 });
