@@ -1,20 +1,26 @@
 //require express & setup Router
 var express = require("express");
 var router = express.Router();
+var cheerio = require("cheerio");
+var controller = require("../controllers/newscontroller");
+
 // Initialize Express
 var app = express();
 //Require Mongoose
 var mongoose = require("mongoose");
+var request = require("request");
+
 // Require all models
 var db = require("../models");
 
 
+
 // A GET route for scraping the echoJS website
-app.get("/", function(req, res) {
+router.get("/scrape", function(req, res) {
     // First, we grab the body of the html with request
-    axios.get("http://weeklyworldnews.com/").then(function(response) {
+    request.get("http://weeklyworldnews.com/", function(err, response, html) {
       // Then, we load that into cheerio and save it to $ for a shorthand selector
-      var $ = cheerio.load(response.data);
+      var $ = cheerio.load(html);
   
       // Now, we grab every h2 within an article tag, and do the following:
       $("h1.entry-title").each(function(i, element) {
@@ -39,9 +45,14 @@ app.get("/", function(req, res) {
             // If an error occurred, send it to the client
             return res.json(err);
           });
+          console.log(result);
+
       });
-  console.log(result);
       // If we were able to successfully scrape and save an Article, send a message to the client
       res.send("Scrape Complete");
     });
   });
+
+  router.get("/find", controller.findAll); 
+
+  module.exports = router

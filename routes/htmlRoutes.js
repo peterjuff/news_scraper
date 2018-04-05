@@ -10,3 +10,5 @@ var request = require("request");
 var mongoose = require("mongoose");
 
 var db = require("../models");
+
+module.exports = router;
