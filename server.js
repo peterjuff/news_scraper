@@ -17,7 +17,7 @@ var app = express();
 
 var PORT = process.env.PORT || 3000;
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/news_scraper";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
@@ -41,10 +41,12 @@ mongoose.connect("mongodb://localhost/news_scraper");
 //require routes 
 // var htmlRoutes = require("./routes");
 var apiRoutes = require("./routes/apiRoutes.js");
+var htmlRoutes = require("./routes/htmlRoutes.js");
 console.log(apiRoutes);
 
 //Use routes
 app.use(apiRoutes);
+app.use(htmlRoutes);
 // app.use("/api", apiRoutes);
 
 app.listen(3000, function() {

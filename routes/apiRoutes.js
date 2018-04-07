@@ -55,4 +55,6 @@ router.get("/scrape", function(req, res) {
 
   router.get("/find", controller.findAll); 
 
+  router.get("/articles", controller.findAll);
+
   module.exports = router
