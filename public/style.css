@@ -1,0 +1,15 @@
+body {
+    background-color: bisque;
+}
+
+#newsHere {
+    display: inline-block;
+    overflow: auto;
+    width: 60%;
+    height: 700px;
+}
+
+#notes {
+
+    float: right;
+}
