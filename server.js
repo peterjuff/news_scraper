@@ -43,6 +43,7 @@ mongoose.connect("mongodb://localhost/news_scraper");
 var apiRoutes = require("./routes/apiRoutes.js");
 var htmlRoutes = require("./routes/htmlRoutes.js");
 console.log(apiRoutes);
+console.log(htmlRoutes);
 
 //Use routes
 app.use(apiRoutes);
